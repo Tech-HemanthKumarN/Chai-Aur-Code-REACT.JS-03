@@ -3,8 +3,14 @@ import { useState } from "react";
 import "./App.css";
 import { Callback } from "./Callback/Callback.jsx";
 function App() {
+
+  // UIcolor: This is the "Source of Truth." Whatever string is stored here (e.g., "red", "blue", "#000") is what the box will display.
+  // setUIColor: This is the only function allowed to change the color.
+
   const [UIcolor, setUIColor] = useState(""); // Initialize with empty string for color
 
+  //This function is the "bridge." It waits to receive a value (color) and then gives it to setUIColor.
+  //Crucial Step: We pass this function into the child component as a prop: <Callback getColor={getColor} />.
   const getColor = (color) => {
     setUIColor(color);
   };
