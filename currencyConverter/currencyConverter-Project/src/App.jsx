@@ -12,6 +12,7 @@ function App() {
   const [convertedAmount, setConvertedAmount] = useState(0);
 
   //Hook
+  //custom Hook --> useCurrencyInfo 
   const CurrencyInfo = useCurrencyInfo(from);
   const options = Object.keys(CurrencyInfo)
 
@@ -27,6 +28,7 @@ function App() {
   const convert = () =>{
     setConvertedAmount(amount * CurrencyInfo[to])
   }
+
    return (
         <div
             className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
@@ -46,7 +48,7 @@ function App() {
                         <div className="w-full mb-1">
                             <InputBox
                                 label="From"
-                                amount={amount}
+                                amount={amount} // amount -> the current numeric value
                                 currencyOptions={options}
                                 onCurrencyChange={(currency) => setAmount(amount)}
                                 selectCurrrency={from}
